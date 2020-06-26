@@ -1,0 +1,285 @@
+<%- include('partials/header') %>
+<section class="section-sign-up">
+  <%if(error&&error.length>0){%>
+    <div  class="errormsg"><%=error%></div> 
+    <%}%>
+  <div class="sign-up-main-heading">
+    <div class="row">
+     
+      <h1>Sign up now</h1>
+      <p>Sign up for free and start your journey with <em>Kaam Shaam</em> now</p>
+      <p>It's free and always will be!</p>
+    </div>
+    </div>
+  <div class="sign-up-main-content">
+   
+    <div id="signupcontainer" class="row sign-up-card">
+      <div class="col-2-of-3 sign-up-card-left col-no-margin" style="height: fit-content;">
+        <div class="sign-up-card-left-heading">
+          <h2>Sign up</h2>
+          <h2><i class="fas fa-arrow-alt-circle-up"></i></h2>
+        </div>
+        
+        <div class="sign-up-card-left-form">
+          <form id="signupform" action="/Signup" enctype="multipart/form-data" method="POST">
+              <div id="signup1">
+                          <div class="col-1-of-2 col-margin sign-up-input flex">
+                            <input id="s-fname" type="text" placeholder="First Name" name="user[firstName]">
+                            <span id="errorfirstName" class="errorinput"></span>
+                          </div>
+                          <div class="col-1-of-2 col-margin sign-up-input flex">
+                            <input id="s-lname" type="text" placeholder="Last Name" name="user[lastName]">
+                            <span id="errorlastName" class="errorinput" ></span>
+                          </div>
+                    
+                        <div class="col-1-of-2 col-margin sign-up-input flex">
+                          <input id="s-username" type="text" placeholder="Username" name="username" >
+                          <span id="errorusername" class="errorinput" ></span>
+
+                        </div>
+                        <div class="col-1-of-2 col-margin sign-up-input flex" >
+                          <input id="s-email" type="email" placeholder="email" name="email">
+                          <span id="erroremail" class="errorinput" ></span>
+                        </div>
+                  
+                  
+                  
+
+                        <div class="col-1-of-2 col-margin sign-up-input flex">
+                          <input id="s-password" type="password" placeholder="Password" name="password" >
+                          <span id="errorpassword" class="errorinput" ></span>
+                        </div>
+                        <div class="col-1-of-2 col-margin sign-up-input flex">
+                          <input id="s-cpassword" type="password" placeholder="Confirm Password" name="confirmpassword" >
+                          <span id="errorconfirmpassword" class="errorinput" ></span>
+                        </div>
+                    
+                          <div class="col-1-of-2 col-margin sign-up-input" style="display: flex;flex-direction: row;">
+                              <select  id="zipcodes-signup" name="phoneNo[countrycode]">  
+                                <option>code</option>          
+                              </select>
+                            <!-- <input style="width:  25%; margin-right:5% ;" type="tel" placeholder="code" name="user[phoneNo]"> -->
+                              <input style="width:  50%;  " type="tel" placeholder="phone no" name="phoneNo[phoneNo]">
+                          </div> 
+                          <div class="col-1-of-1" style="margin-top:1.5rem;">
+                            <div class="col-1-of-2 col-margin sign-up-input fileinput ">
+                              <label for="">Select profile pic</label><input style="display: inline; border-bottom: none; padding: 0rem 1rem!important;" title="choose image" type="file" name="profileImage"  accept="image/*" style="border: none;" >
+                              </div>
+                        
+                                
+                              <div class="col-1-of-2 col-margin ">
+                                  <label>Register as :</label>
+                                  <div style="padding:1rem 5% ">
+                                    <input type="radio"  name="isHirer" value="false">
+                                    <label >Free Lancer</label><br>
+                                    <input type="radio"  name="isHirer" value="true">
+                                    <label >Hirer</label><br>
+                                  </div>
+                              </div>
+                          </div>
+                      <div id="btn-next" class="col-1-of-1 sign-up-submit">
+                        <button class="btn-submit">Next<i class="fas fa-level-up-alt"></i></button>
+                      </div>
+              </div>
+                <div id="signup2">
+                      
+                    <div class="col-1-of-2 col-margin sign-up-input flex">
+                      <input id="s-fname" type="text" placeholder="Location" name="address[location]">
+                      <span class="errorinput" ></span>
+                    </div>
+                    <div class="col-1-of-2 col-margin sign-up-input flex">
+                      <input id="s-lname" type="text" placeholder="city" name="address[city]">
+                      <span class="errorinput" ></span>
+                    </div>
+              
+                  <div class="col-1-of-2 col-margin sign-up-input flex">
+                    <input id="s-username" type="text" placeholder="country" name="address[country]" >
+                    <span class="errorinput" ></span>
+                  </div>
+                <div id="btn-signin" class="col-1-of-1 sign-up-submit">
+                  <button id="btn-submit" type="submit" class="btn-submit" style="margin: 0rem 1rem;" >Submit <i class="fas fa-level-up-alt"></i></button>
+                  <button id="btn-back" class="btn-submit" style="margin: 0rem 1rem;"><i class="fas fa-arrow-left"></i>back</button>
+                 
+                </div>
+           </div>
+          
+          </form>
+        </div>
+      </div>
+      <div class="col-1-of-3 sign-up-card-right" >
+        <div class="sign-up-card-right-heading">
+          <h2>Contact Us</h2>
+        </div>
+        <div class="sign-up-card-right-contact-details">
+          <span class="contact-phone">
+            <i class="fas fa-mobile-alt"></i>
+            <h4>+92-90078601</h4>
+          </span>
+
+          <span class="contact-phone">
+            <i class="fas fa-envelope"></i>
+            <h4>info@kaamshaam.com</h4>
+          </span>
+
+          <span class="contact-icons">
+            <a href="#">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="#">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+$(document).ready(function(){
+
+  $("#signup2").hide();
+  $("#btn-next").click(function(){
+    $("form").submit(function(e){
+    e.preventDefault();
+    })
+  $("#signup1").hide();
+  $("#signup2").show();
+  })
+  $("#btn-back").click(function(){
+    $("form").submit(function(e){
+      e.preventDefault();
+    })
+  // $(".sign-up-card-left").forEach(element => {
+  //   $(element).addClass("small");
+  // });
+  // $(".sign-up-card-right").forEach(element => {
+  //   $(element).addClass("small");
+  // });
+  $("#signup2").hide();
+  $("#signup1").show();
+  })
+  $("#btn-submit").click(function(){
+    alert("kdjksdjpdsk")
+ 
+             $("form").unbind('submit');
+            $("form").submit();
+    
+  })
+  $.getJSON("countriesdata.json",function(data){
+        data.forEach(country => {
+          // alert(country);
+          $("#zipcodes-signup").append("<option value="+country.dial_code+">"+country.code+" "+country.dial_code +"</option>")
+        });
+  }).fail(function(){
+    alert("fail")
+  })
+
+
+
+
+
+var error_username = false;
+var error_password = false;
+var error_retype_password = false;
+var error_email = false;
+var error_firstname=false;
+var error_lastname=false;
+
+$("#s-username").focusout(function() {
+  check_username();
+});
+
+$("#s_password").focusout(function() {
+
+  check_password();
+  
+});
+
+$("#s-cpassword").focusout(function() {
+
+  check_retype_password();
+  
+});
+
+$("#s-email").focusout(function() {
+
+  check_email();
+  
+});
+
+function check_username() {
+
+  var username_length = $("#s-username").val().length;
+  
+  if(username_length < 5 || username_length > 20) {
+    $("#errorusername").text("Should be between 5-20 characters");
+    error_username = true;
+  } else {
+    $("#errorusername").text("");
+  }
+
+}
+
+function check_password() {
+
+  var password_length = $("#s-password").val().length;
+  
+  if(password_length < 8) {
+    $("#s-password").html("At least 8 characters");
+    error_password = true;
+  }
+
+}
+
+function check_retype_password() {
+
+  var password = $("#s-password").val();
+  var retype_password =  $("#s-cpassword").val();
+  
+  if(password !=  retype_password) {
+    $("#retype_password_error_message").html("Passwords don't match");
+    error_retype_password = true;
+  } 
+}
+
+function check_email() {
+
+  var pattern = new RegExp(/^[+a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+
+  if(pattern.test($("#s-email").val())) {
+
+  } else {
+    $("#s-email").html("Invalid email address!!!");
+    error_email = true;
+  }
+
+}
+
+$("#signupform").submit(function() {
+                    
+  error_username = false;
+  error_password = false;
+  error_retype_password = false;
+  error_email = false;
+                    
+  check_username();
+  check_password();
+  check_retype_password();
+  check_email();
+  
+  if(error_username == false && error_password == false && error_retype_password == false && error_email == false) {
+    return true;
+  } else {
+    return false;	
+  }
+  
+});
+});
+</script>
+<%- include('partials/footer') %>

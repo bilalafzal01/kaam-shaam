@@ -1,0 +1,110 @@
+<%- include('partials/header') %>
+<%console.log("::::::::::::::::::::Browse Jobs::::::::::::")%>
+<% if(currentUser) {%>
+    <%if(currentUser.isHirer){%>
+     <%   var userDetail=currentUser.userDetail.hirerDetail;%>
+       <%}else{%>
+    <% var userDetail=currentUser.userDetail.freelancerDetail;}%>
+    <%console.log("In browse job page printing userDetail")%>
+<%console.log(userDetail)%>
+<%}%>
+<%console.log(jobs)%>
+<div class="header-content-browse u-margin-top">
+    <div class="heading">
+        <h1 class="heading-primary">
+            <span class="heading-primary-main">Browse Jobs</span>
+            <span class="heading-primary-sub">Lorem ipsum dolor sit amet.</span>
+        </h1>
+        <form action="/Browsejob" method="GET">
+            <div class="header-input-div">
+                <input type="text" class="header-input-text" name=search>
+                <a type="submit">
+                    <i class="fas fa-search"></i>
+                </a>
+            </div>
+        </form>
+        
+    </div>
+</div>
+<section class="section-jobs-browse">
+    <div class="row">
+        <div class="col-1-of-4">
+            <div class=browse-jobs-side-profile>
+                <span>
+                    <img src="<%=currentUser.profileImage%>" alt="profilepic">
+                    <h4><%=" "+userDetail.firstName +" "+userDetail.lastName%></h4>
+                </span>
+                <span class="visibility-span">
+                    <h5>Visibility:</h5>
+                    <p><i class="fas fa-lock"></i>Locked</p>
+                </span>
+                <span id="availability-span">
+                    <h5>Availability:</h5>
+                    <p><i class="far fa-clock"></i>open to offers <i class="fas fa-pen"></i></p>
+                </span>
+                <!-- <span>
+                    <a href="/Browsejob:"<></a>>My posts</a>
+                    <button>My posts</button>
+                    <button><a href="/Browsejob">All posts</a></button>
+                </span> -->
+            </div>
+        </div>
+        <div class="col-3-of-4">
+            <div class="browse-jobs-main">
+                <div class="my-feed">
+                    <h3>My Feed</h3>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                
+                <!-- one job posting -->
+                <%jobs.forEach(function(job){%>
+                <div class="job-one">
+                    <div class="job-title">
+                        <h4><%=job.jobdetail.jobTitle%></h4>
+                        <span class="job-like-dislike">
+                            <i class="fas fa-heart"></i>
+                            <i class="far fa-thumbs-down"></i>
+                        </span>
+                    </div>
+                    <div class="job-time-details">
+                        <span class="job-details-timespan"><%=job.jobdetail.duration%>hr min</span>
+                        <span class="job-details-level"><%=job.jobdetail.jobLevel%></span>
+                        <span class="job-details-budget">Est. Budget: $<%=job.jobdetail.budget%></span>
+                        <span>Posted on <%=job._id.getTimestamp().toString().slice(0,15)%></span>
+                    </div>
+                    <div class="job-description">
+                        <%=job.jobdetail.description.slice(0,500)%>
+                        <br>
+                        <br>
+                        <%=job.jobdetail.description.slice(501,1000)%>
+                        <a href="#" class="job-description-view-more">view more</a>
+                    </div>
+                    <div class="job-skills">
+                        <span class="job-skills-heading">Skills:</span>
+                        <%var skills=job.jobdetail.skills.split(',');%>
+                        <%skills.forEach(function(skill){%>
+                        <span class="job-skills-skillset"><%=skill%></span>
+                        <%})%>
+                    </div>
+                    <div class="job-actions">
+                        <a href="/browsejobs/job/<%=job._id%>" class="action-apply-now">Apply now</a>
+                        <a href="" class="action-view-posting">View posting</a>
+                    </div>
+                    <div class="job-employer-details">
+                        <span>
+                            <p><i class="fas fa-check-circle" id="i-blue"></i>Payment verified</p>
+                            <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="far fa-star"></i></p>
+                            <p><i class="fas fa-map-marker-alt"></i>Islamabad</p>
+                            <span><span class="job-emp-amount">$500</span>spent</span>
+                        </span>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <%})%>
+            </div>
+        </div>
+    </div>
+</section>
+<%- include('partials/footer') %>

@@ -1,0 +1,65 @@
+<%- include('partials/header_formain') %>
+<section class="section-about-us">
+    <h2 class="row section-about-us-heading">About us</h2>
+    <div class="row section-about-us-content">
+        <div class="col-1-of-2 section-about-us-text">
+            <h3 class="heading-tertiary u-margin-bottom-small">Some info about us</h3>
+            <p class="paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid numquam, sunt
+                facere nisi fugit
+                tempora.</p>
+
+            <h3 class="heading-tertiary u-margin-bottom-small">Work from anywhere</h3>
+            <p class="paragraph">Lorem ipsum dolor Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit,
+                maiores. sit amet
+                consectetur adipisicing elit. Aliquid numquam, sunt facere nisi fugit tempora.</p>
+
+            <a href="#" class="btn-text">Learn more &rarr;</a>
+
+        </div>
+        <div class="col-1-of-2">
+            <div class="composition">
+                <img class="composition__photo composition__photo--p1" src="about-us-one.jpg" alt="">
+                <img class="composition__photo composition__photo--p2" src="about-us-three.jpg" alt="">
+                <img class="composition__photo composition__photo--p3" src="about-us-two.jpg" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- our numbers/stats section -->
+<section class="section-stats">
+    <div>
+        <div class="row section-stats-heading">
+            <h3><span>Kaam Shaam</span> in a nutshell</h3>
+        </div>
+        <div class="row stats-content">
+            <div class="col-1-of-4">
+                <h3>600,000</h3>
+                <p>Employeees worldwide</p>
+            </div>
+            <div class="col-1-of-4">
+                <h3>>10,000</h3>
+                <p>Active Jobs</p>
+            </div>
+            <div class="col-1-of-4">
+                <h3>2 million</h3>
+                <p>Projects completed</p>
+            </div>
+            <div class="col-1-of-4">
+                <h3>>100,000</h3>
+                <p>Happy Employers</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script>
+    $( document ).ready(function() {
+        $(".footer .row").css("padding-top","20rem");
+        $(".footer").css("margin-top","-15vh");
+
+        
+    }); 
+</script>
+<%- include('partials/footer') %>

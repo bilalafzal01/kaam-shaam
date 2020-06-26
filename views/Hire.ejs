@@ -1,0 +1,90 @@
+<%- include('partials/header') %>
+<div class="container">
+    <div class="Hiring-main-heading">
+        <div class="row">
+            <h1>Hire now</h1>
+            <p>Post a new job opening now in under a minute! It's really <em>that</em> easy</p>
+        </div>
+    </div>
+    <form action="/hire" method="POST">
+        <div class="hirecard">
+            <div class="left">
+                <label class="label" for="fname">Job Title</label>
+                <input class="input" type="text" id="fname" name="Job[jobTitle]" placeholder="Title">
+            </div>
+            <div class="right">
+                <label class="label" for="fname">Job Category</label>
+                <select class="input" id="jobcategory" name="country" name="Job[jobCategory]">
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Science, Technology, Engineering and Mathematics">Science, Technology, Engineering
+                        and Mathematics</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Content Writing">Content Writing</option>
+                </select>
+            </div>
+            <div class="left">
+                <label class="label" for="fname">Job Level</label>
+                <select class="input" id="joblevel" name="Job[jobLevel]">
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Experienced">Experienced</option>
+                    <option value="Highly Experienced and Skilled">Highly Experienced and Skilled</option>
+                </select>
+            </div>
+            <div class="right">
+                <label class="label" for="lname">Estimated Budget</label>
+                <input class="input" type="number" id="budget" name="Job[budget]" placeholder="Budget eg. $50">
+            </div>
+            <div class="center">
+                <label class="label" for="jobdescription">Job Description</label>
+                <textarea name="Job[description]" id="jobdescription" class="input description" cols="30" rows="5"
+                    placeholder="Brief information about the job"></textarea>
+            </div>
+            <div class="left">
+                <!-- <label class="label" for="Attachment">Attachment:</label>
+            <input class="input" type="file" id="img" name="Attachment"> -->
+                <label class="label" for="skills">Skills</label>
+                <input class="input" type="text" id="budget" name="Job[skills]" placeholder="add skills">
+
+            </div>
+            <div class="right">
+                <label class="label">Duration</label>
+                <input class="input" type="number" id="Duration" name="Job[duration]" placeholder="Duration">
+            </div>
+            <!-- <div class="last"> -->
+            <!-- <label class="label-last" for="skills">Skills:</label> -->
+            <!-- <input class="input" type="text" id="addskill" placeholder="Databases" style="width:min-content" readonly> -->
+            <!-- <button id="plus-btn">+</button> -->
+
+            <!-- </div> -->
+            <button id="postjob-btn" class="btn-submit">Post Job</button>
+        </div>
+
+    </form>
+
+</div>
+<script>
+    var plusbtn = document.getElementById("plus-btn");
+    var noofskills = 0;
+    // $("div .last").on("click", "button", function () {
+
+    //     $("#plus-btn").remove();
+    //     $(".last").append("<input name=Job[skills["+noofskills+"]] class='input' type='text' id='addskill' placeholder='add skills'>");
+    //     noofskills++;
+    // });
+    // $(document).ready(function (){
+    //     $("div .last").on("keypress", "input", (function (event) {
+    //         if (event.keyCode == 13) {
+
+    //             var todoText = $(this).val();
+
+
+    //             console.log(todoText);
+    //             $(".last").append("<span class='skills'>" + todoText + "</span>")
+    //             $(".last").append("<button id='plus-btn'>" + "+" + "</button>");
+    //             $(".last input").css("display","none");
+    //         }
+    //     }));
+    // });
+</script>
+<%- include('partials/footer') %>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaam Shaam Main</title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>    -->
+     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="shortcut icon" href="./logo-white.png" type="image/x-icon">
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/d5ebe584cd.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+       <!-- definning a object for user detail to use here -->
+       <% if(currentUser) {%>
+        
+                <%if(currentUser.isHirer){%>
+                 <%   var userDetail=currentUser.userDetail.hirerDetail;%>
+                   <%}else{%>
+                <% var userDetail=currentUser.userDetail.freelancerDetail;}%>
+        <%}%>
+    <!-- navbar/header section -->
+<header class="header">
+        <!-- main navbar -->
+        <nav class="nav">
+            <span class="navbar-toggler" id="js-navbar-toggle" onclick="openNav()">
+                <i class="fas fa-bars"></i>
+            </span>
+            <a href="/" class="nav-brand">
+                <img src="http://localhost:8080/./logo-blue.png" alt="Kaam shaam">
+            </a>
+            <input type="search" name="search" id="search" placeholder="search"> <button type="submit"><i class="fa fa-search"></i></button>
+            <div class="main-nav">
+                <a href="/browsejobs">Browse Jobs</a>
+                <a href="Hire">Hire</a>
+                
+               
+                <% if(!currentUser===true) {%>
+                    <a href="#" id="myBtn">Log in <i class="fas fa-sign-in-alt"></i></a>
+                    <a href="/signup">Sign up <i class="fas fa-user-plus"></i></a>
+                <%}else{%>
+                            <div class="dropdown">
+                                <a><img src="<%= currentUser.profileImage %>" alt="Avatar" class="avatar">&nbsp;<%=" "+userDetail.firstName +" "+userDetail.lastName%>&nbsp;<i class="fas fa-caret-down"></i></a>
+                                <div class="dropdown-content">
+                                <a href="viewprofile/<%=currentUser._id%>" class="dropdown-a">View Profile</a>
+                                <a href="/logout" class="dropdown-a">Log Out<i class="fas fa-sign-in-alt"></i></a>
+                                </div>
+                            </div>
+                  <%}%>
+                
+            </div>
+        </nav>
+        <!-- sub navbar with categories -->
+        <div class="sub-nav">
+            <a href="#">Business</a>
+            <a href="#">Web Design</a>
+            <a href="#">Content</a>
+            <a href="#">SEO</a>
+            <a href="#">Graphics</a>
+        </div>
+        <!-- main heading/jumobotron -->
+        <div class="header-content">
+            <%if(success&&success.length>0){%>
+                <div  class="successmsg"><%=success%></div> 
+            <%}%>
+            <div class="heading">
+                
+                <h1 class="heading-primary">
+                    <span class="heading-primary-main">Kaam shaam</span>
+                    <span class="heading-primary-sub">Find your next project now!</span>
+                </h1>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-white">
+                        Browse jobs
+                    </a>
+                    <a href="#" class="btn btn-blue">
+                        Learn more
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <div id="mySidenav" class="sidenav">
+                <div id="sidebar-heading">
+                    <h1 class="inside first">Kaam</h1><h1 class="inside">Shaam</h1>
+                </div>
+                <div class="searching">
+                <input  type="search" name="search" id="sidenav-search" placeholder="search"> <button id="search-btn" type="submit"><i class="fa fa-search"></i></button></div>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a class="line" href="browsejobs">Browse Jobs</a>
+                
+                <a class="line" href="Hire">Hire</a>
+                <% if(!currentUser===true) {%>
+                    <a href="#" id="myBtn2">Log in <i class="fas fa-sign-in-alt"></i></a>
+                    <a href="/signup">Sign up <i class="fas fa-user-plus"></i></a>
+                <%}else{%>
+                    <a><img src="<%= currentUser.profileImage %>" alt="Avatar" class="avatar">&nbsp;<%=" "+userDetail.firstName +" "+userDetail.lastName%>&nbsp;<i class="fas fa-caret-down"></i></a>
+                    <a href="/logout" >Log Out<i class="fas fa-sign-in-alt"></i></a>
+                  <%}%>
+             
+              </div>
+            </div>
+    </header>
+   
+           
+        <!-- cardtrycode -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Kaam Shaam</h2>
+            <p> Log in to your account</p>
+            <form action="/login" method="POST" style="width: 80%; ">
+            <div class="login">
+                
+                    <div class="input-container">
+                        <i class="fas fa-envelope icon"></i>
+                        <input class="input-field email" type="text" placeholder="username" name="username" required>
+                    </div>
+
+                    <div class="input-container">
+                        <i class="fas fa-key icon"></i>
+                        <input class="input-field password" type="password" placeholder="Password" name="password" required>
+                    </div>
+                    
+            </div>
+            <button class="Submit-btn" type="submit">Log in</button>
+                </form> 
+            
+            <h3><span>or</span></h3>
+            <a id="newaccount" href="/signup">Already have an account?</a>
+        </div>
+    </div>

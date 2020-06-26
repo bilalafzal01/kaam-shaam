@@ -15,7 +15,9 @@ let express = require("express"),
     jobRoutes=require('./routes/Jobs/jobs');
 
 // This connect string is for connecting to cloud dbs
-mongoose.connect("mongodb+srv://admin:admin@rexia-database-rwwvm.mongodb.net/Seekh?retryWrites=true&w=majority");
+require('dotenv').config();
+let mongoURI = process.env.MONGODBURI;
+mongoose.connect(mongoURI);
 
 
 // local dbs

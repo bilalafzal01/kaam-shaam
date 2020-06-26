@@ -2259,7 +2259,7 @@ select {
 }
 
 .section-apply-now-job-details {
-  border-bottom: 0.15rem solid #a7a7a780;
+  /* border-bottom: 0.15rem solid #a7a7a780; */
 }
 
 .section-apply-now-job-details p {
@@ -2304,6 +2304,18 @@ select {
 }
 .client-rating span {
   padding: 0 0 0 1rem;
+  color: #010101;
+  font-weight: 400;
+}
+
+/* stats div on apply now page */
+.section-job-stats {
+  padding: 2rem 2rem;
+}
+
+.section-job-stats h1 {
+  margin: 0;
+  font-size: 2.2rem;
   color: #010101;
   font-weight: 400;
 }

@@ -3,6 +3,8 @@ let express = require("express"),
     Job = require('../../models/job');
     User = require('../../models/user');
     var middleware=require("../../middleware");
+const job = require("../../models/job");
+const { populate } = require("../../models/job");
 
 // Edit Job Routes
 router.get("/:id/edit",function(req,res){
@@ -38,12 +40,28 @@ router.delete("/:id",middleware.isLoggedIn,function(req,res){
                 if(!err)
                 {
                     return res.redirect("back");        
-                    req.flash("error","Successfully deleted Your post");
-                    return res.redirect("back"); 
                 }
             })
                   
         }
     })
 })
+
+//get proposal on a job
+router.get("/:id/viewproposals",middleware.isLoggedIn,function(req,res){
+
+    //getting Job data and then populating  all proposals of this job and then populating author inside of proposals
+    job.findById(req.params.id).populate({path :"proposals.id",populate:{path:"author.id"}}).exec(function(err,foundJob){
+        try{
+            console.log(foundJob);
+            console.log(foundJob.proposals);
+            res.render("viewProposal",{job:foundJob});
+        }
+        catch(err){
+            console.log("There was an error in get proposal route!!!")
+        }
+    })
+
+})
+
 module.exports = router;

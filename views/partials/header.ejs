@@ -21,11 +21,10 @@
 <body>
 <% if(currentUser) {%>
         <%if(currentUser.isHirer){%>
-         <%   var userDetail=currentUser.userDetail.hirerDetail;%>
+         <%   %>
            <%}else{%>
-        <% var userDetail=currentUser.userDetail.freelancerDetail;}%>
+        <% }%>
 <%}%>
-<%console.log(currentUser)%>
     <!-- navbar/header section -->
     <header class="header">
         <!-- main navbar -->
@@ -46,9 +45,9 @@
                     <a href="/signup">Sign up <i class="fas fa-user-plus"></i></a>
                 <%}else{%>
                     <div class="dropdown">
-                        <a><img src="http://localhost:8080/<%= currentUser.profileImage %>" alt="Avatar" class="avatar">&nbsp;<%=" "+userDetail.firstName +" "+userDetail.lastName%>&nbsp;<i class="fas fa-caret-down"></i></a>
+                        <a><img src="http://localhost:8080/<%= currentUser.profileImage %>" alt="Avatar" class="avatar">&nbsp;<%=" "+currentUser.firstName +" "+currentUser.lastName%>&nbsp;<i class="fas fa-caret-down"></i></a>
                         <div class="dropdown-content">
-                        <a href="viewprofile/<%=currentUser._id%>" class="dropdown-a">View Profile</a>
+                        <a href="/viewprofile/<%=currentUser._id%>" class="dropdown-a">View Profile</a>
                         <a href="/logout" class="dropdown-a">Log Out<i class="fas fa-sign-in-alt"></i></a>
                         </div>
                     </div>
@@ -75,7 +74,7 @@
                 <a href="/signup">Sign up <i class="fas fa-user-plus"></i></a>
             <%}else{%>
               
-                <a><img src="http://localhost:8080/<%= currentUser.profileImage %>" alt="Avatar" class="avatar">&nbsp;<%=" "+userDetail.firstName +" "+userDetail.lastName%>&nbsp;<i class="fas fa-caret-down"></i></a>
+                <a><img src="http://localhost:8080/<%= currentUser.profileImage %>" alt="Avatar" class="avatar">&nbsp;<%=" "+currentUser.firstName +" "+currentUser.lastName%>&nbsp;<i class="fas fa-caret-down"></i></a>
                 <a href="/logout">Log Out<i class="fas fa-sign-in-alt"></i></a>
               <%}%>
           </div>

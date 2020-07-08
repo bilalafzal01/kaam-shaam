@@ -1,14 +1,12 @@
 <%- include('partials/header') %>
-<%console.log("::::::::::::::::::::Browse Jobs::::::::::::")%>
+<%# console.log("::::::::::::::::::::Browse Jobs::::::::::::")%>
 <% if(currentUser) {%>
     <%if(currentUser.isHirer){%>
-     <%   var userDetail=currentUser.userDetail.hirerDetail;%>
+     <% %>
        <%}else{%>
-    <% var userDetail=currentUser.userDetail.freelancerDetail;}%>
-    <%console.log("In browse job page printing userDetail")%>
-<%console.log(userDetail)%>
+    <% }%>
 <%}%>
-<%console.log(jobs)%>
+<%# console.log(jobs)%>
 <div class="header-content-browse u-margin-top">
     <div class="heading">
         <h1 class="heading-primary">
@@ -32,7 +30,7 @@
             <div class=browse-jobs-side-profile>
                 <span>
                     <img src="<%=currentUser.profileImage%>" alt="profilepic">
-                    <h4><%=" "+userDetail.firstName +" "+userDetail.lastName%></h4>
+                    <h4><%=" "+currentUser.firstName +" "+currentUser.lastName%></h4>
                 </span>
                 <span class="visibility-span">
                     <h5>Visibility:</h5>
@@ -88,7 +86,7 @@
                     </div>
                     <div class="job-actions">
                         <a href="/browsejobs/job/<%=job._id%>" class="action-apply-now">Apply now</a>
-                        <a href="" class="action-view-posting">View posting</a>
+                        <a href="/browsejobs/job/<%=job._id%>" class="action-view-posting">View posting</a>
                     </div>
                     <div class="job-employer-details">
                         <span>

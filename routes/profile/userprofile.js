@@ -7,8 +7,8 @@ Job = require('../../models/job');
 var middleware=require("../../middleware");
 
 
-router.get("/:id",middleware.isLoggedIn, function (req, res) {    
-    User.findById(req.params.id).populate("posts").exec(function(err,User){
+router.get("/:id",middleware.isLoggedIn,middleware.checkCommentOwnership, function (req, res) {    
+    User.findById(req.params.id).populate("userDetail.hirerDetail.posts").populate("userDetail.freelancerDetail.proposals").exec(function(err,User){
         if(err)
         {
             console.log(err)

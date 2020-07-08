@@ -1,5 +1,4 @@
-mongoose = require('mongoose');
-
+var mongoose = require('mongoose');
 var jobSchema = new mongoose.Schema({
    jobdetail:{
     jobTitle: String,
@@ -18,10 +17,15 @@ var jobSchema = new mongoose.Schema({
         },
         username:String,
     },
-        posted_At:{
-            type: Date,
-            default: Date.now
-        }
-
+    proposals:{
+        id:[{
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Proposal",
+          }]
+    },
+    posted_At:{
+        type: Date,
+        default: Date.now
+    }
 })
 module.exports = mongoose.model("Job", jobSchema);

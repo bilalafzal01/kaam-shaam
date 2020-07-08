@@ -3,9 +3,9 @@
 
 <% if(currentUser) {%>
     <%if(currentUser.isHirer){%>
-     <%   var userDetail=currentUser.userDetail.hirerDetail;%>
+     <%  %>
        <%}else{%>
-    <% var userDetail=currentUser.userDetail.freelancerDetail;}%>
+    <% }%>
 <%}%>
 <%console.log("Current User on Hirerprofile page")%>
 <div class="profilepagecontainer" ng-app="myApp" ng-controller="myCtrl">
@@ -19,7 +19,7 @@
        <br>   
        <!-- <div class="card"> -->
             <img class="profilepageimg" src="http://localhost:8080/<%=currentUser.profileImage%>" alt="no pic" style="width:100%">
-            <h3 style="color: black; line-height: 1; margin-top: 2rem;"><%=" "+userDetail.firstName +" "+userDetail.lastName%></h3>
+            <h3 style="color: black; line-height: 1; margin-top: 2rem;"><%=" "+currentUser.firstName +" "+currentUser.lastName%></h3>
             <p style="color:black;line-height: 1.4; "><%=currentUser.username%></p>
             <p><button id="button">View profile</button></p>
         <!-- </div> -->
@@ -29,7 +29,7 @@
     <div class="options" style="margin: 5rem 0rem;">
         <h3 style="border-bottom: 1px solid darkgray; text-align: center;margin:0rem 2rem 5%;">All Posts</h3>
         <li id="active-jobs-btn" >Active Posts</li>
-        <li id="past-jobs-btn">Recent Posts</li>
+        <li id="past-jobs-btn">Past Posts</li>
         <li id="reviews-btn" >Reviews</li>
         </div>  
     </div>
@@ -48,13 +48,14 @@
                     </div>
                     <div style="padding: 2rem 3rem;align-items: center;align-content: center;text-align: center;border-bottom: 1px solid #E0E0E0;" >
                         <img class="profilepageimg2" src="http://localhost:8080/<%=currentUser.profileImage%>" alt="no pic">
+                        
                     </div>
 
                     <div class="innerprofile-divs" >
                         <!-- <h3 class="subheading" > basic Info</h3> -->
                         
                         <div class="line4">
-                            <h3 style="font-size: 1.7rem;"><%=" "+userDetail.firstName +" "+userDetail.lastName%></h3>
+                            <h3 style="font-size: 1.7rem;"><%=" "+currentUser.firstName +" "+currentUser.lastName%></h3>
                         </div>
                         <div class="muted-text" style="margin-bottom:1rem ;" >Client - account</div>
                         <!-- <div class="line5">Username</div>
@@ -91,13 +92,13 @@
                         <div class="innerprofile-divs2">      
                             <div class="profileinputs2" >
                             <label for="" class="inputlabels">First Name</label>
-                            <input type="text"  name="firstName" class="profileinputs" placeholder="First Name" value="<%=userDetail.firstName%>">
+                            <input type="text"  name="firstName" class="profileinputs" placeholder="First Name" value="<%=currentUser.firstName%>">
                             <span id="errorfirstName"  class="errorinput"  ></span>
                         </div>
                            
                         <div class="profileinputs2">
                             <label for="" class="inputlabels">Last Name</label>
-                            <input type="text" name="lastName"  class="profileinputs" placeholder="Last Name" value="<%=userDetail.lastName%>">
+                            <input type="text" name="lastName"  class="profileinputs" placeholder="Last Name" value="<%=currentUser.lastName%>">
                             <span id="errorlastName" class="errorinput"  ></span> 
                         </div>
                           
@@ -128,11 +129,11 @@
                         </div>  
                         <div class="innerprofile-divs bottomline" >
                             <div class="line5">Phone no</div>
-                            <div class="muted-text" ><%=userDetail.phoneNo.countrycode%> <%=userDetail.phoneNo.phoneNo%></div>
+                            <div class="muted-text" ><%=currentUser.userDetail.phoneNo.countrycode%> <%=currentUser.userDetail.phoneNo.phoneNo%></div>
                         </div>
                         <div class="innerprofile-divs ">
                             <div class="line5">Address</div>
-                            <div class="muted-text" ><%=userDetail.address.location%><br><%=userDetail.address.city%> <br><%=userDetail.address.country%> </div>
+                            <div class="muted-text" ><%=currentUser.userDetail.address.location%><br><%=currentUser.userDetail.address.city%> <br><%=currentUser.userDetail.address.country%> </div>
                         </div>  
                 </div>
                 <div class="profile-divs" id="contact-info-edit">
@@ -140,7 +141,7 @@
                         <h3 class="subheading" >Edit Contact Info</h3>
                     </div>
                     <div id="second-form">
-                            <form class="innerprofile-divs3" action="/usercontactinfo/:id" method="POST">
+                            <form class="innerprofile-divs3" action="/usercontactinfo/<%=currentUser._id%>" method="POST">
                                  <div class="profileinputs2" >
                                             <label for="" class="inputlabels">Email</label>
                                             <input type="text" class="profileinputs" name="email" value="<%=currentUser.email%>">
@@ -151,34 +152,33 @@
                                             <div class="profileinputs4">
                                                 <label for="" class="inputlabels">Code</label>
                                                
-                                                <!-- <input type="text" class="profileinputs" name="phoneNo[countrycode]" placeholder="phone code" value="<%=userDetail.phoneNo.countrycode%>"> -->
 
                                                 <select name="phoneNo[countrycode]" id="zipcodes" class="profileinputs">
-                                                    <option value="<%=userDetail.phoneNo.countrycode%>" ><%=userDetail.phoneNo.countrycode%></option>
+                                                    <option value="<%=currentUser.userDetail.phoneNo.countrycode%>" ><%=currentUser.userDetail.phoneNo.countrycode%></option>
                                                 </select>
                                                 <span>error</span> 
                                             </div>
                                             <div class="profileinputs5">
                                                 <label for="" class="inputlabels">Phone no</label>
-                                                <input type="text" class="profileinputs" name="phoneNo[phoneNo]" placeholder="Phone no" value="<%=userDetail.phoneNo.phoneNo%>">
+                                                <input type="text" class="profileinputs" name="phoneNo[phoneNo]" placeholder="Phone no" value="<%=currentUser.userDetail.phoneNo.phoneNo%>">
                                                 <span>error</span> 
                                             </div>
                                  </div>
                                         
                                  <div class="profileinputs2">
                                             <label for="" class="inputlabels">Address</label>
-                                            <input type="text" class="profileinputs" name="address[location]" placeholder="Username" value="<%=userDetail.address.location%>">
+                                            <input type="text" class="profileinputs" name="address[location]" placeholder="Username" value="<%=currentUser.userDetail.address.location%>">
                                             <span>error</span>
                                 </div>
                                 <div class="profileinputcontainer">
                                             <div class="profileinputs2">
                                                 <label for="" class="inputlabels">City</label>
-                                                <input type="text" class="profileinputs" name="address[city]" placeholder="Username" value="<%=userDetail.address.city%>">
+                                                <input type="text" class="profileinputs" name="address[city]" placeholder="Username" value="<%=currentUser.userDetail.address.city%>">
                                                 <span>error</span>
                                             </div>
                                             <div class="profileinputs6">
                                                 <label for="" class="inputlabels">Country</label>
-                                                <input type="text" class="profileinputs"  name="address[country]" placeholder="country" value="<%=userDetail.address.country%>">
+                                                <input type="text" class="profileinputs"  name="address[country]" placeholder="country" value="<%=currentUser.userDetail.address.country%>">
                                                 <span>error</span>
                                             </div>
                                 </div>
@@ -203,7 +203,7 @@
                 </div>
 
                 
-                <%currentUser.posts.forEach(function(job){%>
+                <%currentUser.userDetail.hirerDetail.posts.forEach(function(job){%>
                     <div class="job">
                         <div class="job-1">
                                 <div class="line1">
@@ -213,9 +213,10 @@
                                 <%var str=""%>
                                 <% var currentdate=new Date();%>
                                 <% var date=currentdate-job._id.getTimestamp() %>
-                                <% var time=(date/(1000))%>
+                                <% var time=(date/(1000));str="secs";%>
+                                <%  if(time<60){var time2="time";}%>
                                 <%  if(time>=60){ str="mins"; %>
-                                <%  var time2=time/60 } %>
+                                <%  time2=time/60 } %>
                                 <%  if(time>=3600){ str="hours"; time2=time/3600 } %>
                                 <%  if (time>=84600){ str="days"; time2=time/(3600*24) } %>
                                 <% if(Math.floor(time2)==1){str=str.slice(0, str.length-1)} %>
@@ -225,7 +226,7 @@
                             <div class="job-2" >
                                 <div class="job-3" >
                                     <span class="titlerow">
-                                        <label for="" class="numbers">0</label>
+                                        <label for="" class="numbers"><%=job.proposals.id.length%></label>
                                     <label class="muted-text">proposals</label>
                                     </span>
                                     <span class="titlerow">
@@ -239,7 +240,7 @@
 
                                 </div>
                                 <div class="job-4">
-                                    <a href="#" class="proposals-btn">View Proposals</a>       
+                                    <a href="/job/<%=job._id%>/viewproposals" class="proposals-btn">View Proposals</a>       
                                 </div>               
                         </div>
                         <div class="jobdropdown">
@@ -412,7 +413,7 @@ $(".dropdownbtn2").each(function(){
 $.getJSON("http://localhost:8080/countriesdata.json",function(data){
         data.forEach(country => {
           // alert(country);
-          if(country.dial_code!="<%=userDetail.phoneNo.countrycode%>")
+          if(country.dial_code!="<%=currentUser.userDetail.phoneNo.countrycode%>")
           $("#zipcodes").append("<option value="+country.dial_code+">"+country.dial_code +"</option>");
         });
   }).fail(function(){

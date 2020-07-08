@@ -1,1 +1,390 @@
-<h1>sdjsjksjk</h1>
+<%- include('partials/header') %>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+<% if(currentUser) {%>
+    <%if(currentUser.isHirer){%>
+     <%   %>
+       <%}else{%>
+    <% }%>
+<%}%>
+<%console.log(currentUser)%>
+<div class="profilepagecontainer" ng-app="myApp" ng-controller="myCtrl">
+<div class="sidebar">
+    <!-- <nav class="pageheading"  >
+        
+        <li style="list-style: none;align-items: center;"> <i class="fa fa-user" aria-hidden="true" style="color: #010164;"></i>&nbsp;&nbsp;User Profile   
+        </li>
+    </nav> -->
+    <div class="profile">
+       <br>   
+       <!-- <div class="card"> -->
+            <img class="profilepageimg" src="http://localhost:8080/<%=currentUser.profileImage%>" alt="no pic" style="width:100%">
+            <h3 style="color: black; line-height: 1; margin-top: 2rem;"><%=" "+currentUser.firstName +" "+currentUser.lastName%></h3>
+            <p style="color:black;line-height: 1.4; "><%=currentUser.username%></p>
+            <p><button id="button">View profile</button></p>
+        <!-- </div> -->
+          <br>      
+    </div >
+ 
+    <div class="options" style="margin: 5rem 0rem;">
+        <h3 style="border-bottom: 1px solid darkgray; text-align: center;margin:0rem 2rem 5%;">All Posts</h3>
+        <li id="active-jobs-btn" >Active Posts</li>
+        <li id="past-jobs-btn">Recent Posts</li>
+        <li id="reviews-btn" >Reviews</li>
+        </div>  
+    </div>
+
+    <div class="profileright">
+            
+            <nav class="pageheading">
+                <li id="active-nav"  style="list-style: none;"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;My Info</li> 
+            </nav>
+            <!-- View Profile Starts here -->
+            <div class="profilecontainer" id="user-profile" >
+            
+                <div class="profile-divs" id="basic-info">
+                    <div class="my-feed">
+                        <h3 class="subheading" >Basic Info</h3><span class="profileicon"><i id="editicon" class="fas fa-pencil-alt"></i></span>
+                    </div>
+                    <div style="padding: 2rem 3rem;align-items: center;align-content: center;text-align: center;border-bottom: 1px solid #E0E0E0;" >
+                        <img class="profilepageimg2" src="http://localhost:8080/<%=currentUser.profileImage%>" alt="no pic">
+                        
+                        <!-- <embed src="http://localhost:8080/profileImage-1593455006202.pdf#toolbar=1&navpanes=1&scrollbar=1 type="  width="100%" height="600px" /> -->
+                    </div>
+
+                    <div class="innerprofile-divs" >
+                        <!-- <h3 class="subheading" > basic Info</h3> -->
+                        
+                        <div class="line4">
+                            <h3 style="font-size: 1.7rem;"><%=" "+currentUser.firstName +" "+currentUser.lastName%></h3>
+                        </div>
+                        <div class="muted-text" style="margin-bottom:1rem ;" >Freelancer - account</div>
+                        <!-- <div class="line5">Username</div>
+                        <div class="muted-text" ><%=currentUser.username%></div> -->
+                    </div>
+                </div>
+                <!-- Edit Account Info Div -->
+                <div class="profilecontainer2" id="basic-info-edit">
+            
+                    <div class="profile-divs" id="basic-info">
+                        <div class="my-feed">
+                            <h3 class="subheading" >Edit Account Info</h3>
+                        </div>
+                    <div id="first-form">
+                      
+                    <form name="form"  action="/userbasicinfo/<%=currentUser._id%>"  enctype="multipart/form-data" method="POST" >
+                        <div style="padding: 2rem 3rem;align-items: center;align-content: center;text-align: center;border-bottom: 1px solid #E0E0E0;" >
+                            <!-- <div class="image-upload">
+                                <label for="file-input">
+                                    <img class="profilepageimg2" src="http://localhost:8080/<%=currentUser.profileImage%>" alt="no pic">
+                                </label>
+                                <input id="file-input" style="color: black;"  title="choose image" type="file" name="profileImage"  accept="image/*" />
+                              </div> -->
+                              <div class="file-upload">
+                                <label for="upload-1" ><img class="profilepageimg2" src="http://localhost:8080/<%=currentUser.profileImage%>" alt="no pic"></label>
+                                <input id="upload-1" style="color: black;"  title="choose image" type="file" name="profileImage"  accept="image/*" />
+                                <p class="file-name">
+                                    Click above <i class="fas fa-arrow-up"></i> to update profile pic 
+                                </p>
+                              </div>
+                              
+                        </div>
+                        
+                        <div class="innerprofile-divs2">      
+                            <div class="profileinputs2" >
+                            <label for="" class="inputlabels">First Name</label>
+                            <input type="text"  name="firstName" class="profileinputs" placeholder="First Name" value="<%=currentUser.firstName%>">
+                            <span id="errorfirstName"  class="errorinput"  ></span>
+                        </div>
+                           
+                        <div class="profileinputs2">
+                            <label for="" class="inputlabels">Last Name</label>
+                            <input type="text" name="lastName"  class="profileinputs" placeholder="Last Name" value="<%=currentUser.lastName%>">
+                            <span id="errorlastName" class="errorinput"  ></span> 
+                        </div>
+                          
+                        <!-- <div class="profileinputs2">
+                            <label for="" class="inputlabels">Username</label>
+                            <input id="usernameinput" type="text" ng-model="username" name="username" class="profileinputs" placeholder="Username" value="<%=currentUser.username%>">
+                            <span  class="errorinput" >{{usernamerr}}</span>
+                        </div> -->
+                       <div style="width:100%;padding-left: 4%;margin-bottom: 1rem;">
+                        <button id="btn-save1" class="btn-editprofile">Save</button> <button style="outline: none;" id="cancel-btn1" class="btn-editprofile" >Cancel</button>
+
+                       </div>
+                    </div> 
+                      
+                        </form>
+                        </div>
+                      </div>
+                </div>
+                <!-- Edit Account Info Div end-->
+                <!-- Contact Info -->
+                <div class="profile-divs bottomline" id="contact-info" >
+                        <div class="my-feed">
+                            <h3 class="subheading" >Contact Info</h3><span class="profileicon" ><i id="editicon2" class="fas fa-pencil-alt"></i></span>
+                        </div>
+                        <div class="innerprofile-divs bottomline">
+                            <div class="line5">Email</div>
+                            <div class="muted-text" style="margin-bottom: 1rem;"><%=currentUser.email%></div>      
+                        </div>  
+                        <div class="innerprofile-divs bottomline" >
+                            <div class="line5">Phone no</div>
+                            <div class="muted-text" ><%=currentUser.userDetail.phoneNo.countrycode%> <%=currentUser.userDetail.phoneNo.phoneNo%></div>
+                        </div>
+                        <div class="innerprofile-divs ">
+                            <div class="line5">Address</div>
+                            <div class="muted-text" ><%=currentUser.userDetail.address.location%><br><%=currentUser.userDetail.address.city%> <br><%=currentUser.userDetail.address.country%> </div>
+                        </div>  
+                </div>
+                <div class="profile-divs" id="contact-info-edit">
+                    <div class="my-feed">
+                        <h3 class="subheading" >Edit Contact Info</h3>
+                    </div>
+                    <div id="second-form">
+                            <form class="innerprofile-divs3" action="/usercontactinfo/<%=currentUser._id%>" method="POST">
+                                 <div class="profileinputs2" >
+                                            <label for="" class="inputlabels">Email</label>
+                                            <input type="text" class="profileinputs" name="email" value="<%=currentUser.email%>">
+                                            <span>error</span>
+                                  </div>
+                                        
+                                 <div class="profileinputs3">
+                                            <div class="profileinputs4">
+                                                <label for="" class="inputlabels">Code</label>
+                                               
+
+                                                <select name="phoneNo[countrycode]" id="zipcodes" class="profileinputs">
+                                                    <option value="<%=currentUser.userDetail.phoneNo.countrycode%>" ><%=currentUser.userDetail.phoneNo.countrycode%></option>
+                                                </select>
+                                                <span>error</span> 
+                                            </div>
+                                            <div class="profileinputs5">
+                                                <label for="" class="inputlabels">Phone no</label>
+                                                <input type="text" class="profileinputs" name="phoneNo[phoneNo]" placeholder="Phone no" value="<%=currentUser.userDetail.phoneNo.phoneNo%>">
+                                                <span>error</span> 
+                                            </div>
+                                 </div>
+                                        
+                                 <div class="profileinputs2">
+                                            <label for="" class="inputlabels">Address</label>
+                                            <input type="text" class="profileinputs" name="address[location]" placeholder="Username" value="<%=currentUser.userDetail.address.location%>">
+                                            <span>error</span>
+                                </div>
+                                <div class="profileinputcontainer">
+                                            <div class="profileinputs2">
+                                                <label for="" class="inputlabels">City</label>
+                                                <input type="text" class="profileinputs" name="address[city]" placeholder="Username" value="<%=currentUser.userDetail.address.city%>">
+                                                <span>error</span>
+                                            </div>
+                                            <div class="profileinputs6">
+                                                <label for="" class="inputlabels">Country</label>
+                                                <input type="text" class="profileinputs"  name="address[country]" placeholder="country" value="<%=currentUser.userDetail.address.country%>">
+                                                <span>error</span>
+                                            </div>
+                                </div>
+                                <div style="width:100%;padding-left: 4%;margin-bottom: 1rem;">
+                                        <button id="btn-save2" class="btn-editprofile">Save</button> <button style="outline: none;" id="cancel-btn2" class="btn-editprofile" >Cancel</button>
+
+                                </div>
+                            </form>
+                    </div>
+                  </div>
+                <!-- Contact Info ends-->
+            </div>
+            <!--View Profile Ends Here-->
+           
+
+
+    </div>
+    
+       
+
+</div>
+
+<script>
+$( document ).ready(function() {
+$(".dropdownbtn2").each(function(){
+        $(this).click(function(){
+         $(this).parent().last().find(".dropdown-content2").show();
+        })
+    });
+
+
+    window.addEventListener("click", function(event) {
+        if((event.target.className!="dropdown-content2") && (event.target.className!="jobdropdown2options"))
+        {   
+            if(event.target.className!="fas fa-ellipsis-h"){
+            $(".dropdownbtn2").each(function(){
+              $(this).parent().last().find(".dropdown-content2").hide();
+            });
+        }
+
+        }
+    });
+
+    // For view Profile Page
+    $("#basic-info-edit").hide();
+    $("#contact-info-edit").hide();
+    $("#editicon").click(function(){
+        $("#basic-info").hide();
+        $("#basic-info-edit").show();
+
+    })
+    $("#editicon2").click(function(){
+        $("#contact-info").hide();
+        $("#contact-info-edit").show();
+
+    })
+    $("#cancel-btn1").click(function(){
+
+        $("#first-form").submit(function(e){
+            e.preventDefault();
+        })
+        $("#basic-info").show();
+        $("#basic-info-edit").hide();
+    })
+    $("#cancel-btn2").click(function(){
+
+        $("#second-form").submit(function(e){
+            e.preventDefault();
+        })
+        $("#contact-info").show();
+        $("#contact-info-edit").hide();
+    })
+
+    //End for view profile
+    
+    $(".dropdown-content").children().first().hide()
+    $(".nav").css("background-color","#f5f5FF");
+    
+
+    function whenclick(){
+        $(".job-description-view-more").each(function(){
+           $(this).parent().last().find(".moredetails").addClass("none");
+           $(this).show()
+    })
+    }
+    $(".job-description-view-more").each(function(){
+        $(this).click(function(){
+           $(this).parent().last().find(".moredetails").removeClass("none");
+           $(this).hide()
+        })
+    })
+    $("#active-jobs").hide();
+     $("#past-jobs").hide();
+    $("#reviews").hide();
+    // $("#active-jobs-btn").addClass("liactive");
+   
+    $("#past-jobs-btn").click(function(){
+        $("#active-nav").html("<i class='fa fa-briefcase' aria-hidden='true'></i>&nbsp;&nbsp;"+$(this).text());
+        $("#active-jobs").hide();
+        $("#reviews").hide();
+        $("#user-profile").hide();
+
+        $("#active-jobs-btn").removeClass("liactive");
+        $("#reviews-btn").removeClass("liactive");
+
+        $("#past-jobs-btn").addClass("liactive");
+        $("#past-jobs").show();
+    })
+    $("#reviews-btn").click(function(){
+        $("#active-nav").html("<i class='fa fa-comments' aria-hidden='true'></i>&nbsp;&nbsp;"+$(this).text());
+
+        $("#active-jobs").hide();
+        $("#past-jobs").hide();
+        $("#user-profile").hide();
+
+        $("#active-jobs-btn").removeClass("liactive");
+        $("#past-jobs-btn").removeClass("liactive");
+        
+        $("#reviews-btn").addClass("liactive");
+        $("#reviews").show();
+    })
+    $("#active-jobs-btn").click(function(){
+        whenclick();
+        $("#active-nav").html("<i class='fa fa-tasks' aria-hidden='true'></i>&nbsp;&nbsp;"+$(this).text());
+      
+        $("#past-jobs").hide();
+        $("#reviews").hide();
+        $("#user-profile").hide();
+
+
+        $("#past-jobs-btn").removeClass("liactive");
+        $("#reviews-btn").removeClass("liactive");
+       
+        $("#active-jobs-btn").addClass("liactive");
+        $("#active-jobs").show();
+    })
+    $("#button").click(function(){
+        $("#active-nav").html("<i class='fa fa-users' aria-hidden='true'></i>&nbsp;&nbsp;"+"My Info");
+      
+        $("#past-jobs").hide();
+        $("#reviews").hide();
+        $("#active-jobs").hide();
+
+
+        $("#past-jobs-btn").removeClass("liactive");
+        $("#reviews-btn").removeClass("liactive");
+        $("#active-jobs-btn").removeClass("liactive");
+
+        $("#basic-info-edit").hide();
+        $("#contact-info-edit").hide();
+        $("#contact-info").show();
+        $("#basic-info").show();
+       
+
+        $("#user-profile").show();
+    })
+});
+
+$.getJSON("http://localhost:8080/countriesdata.json",function(data){
+        data.forEach(country => {
+          // alert(country);
+          if(country.dial_code!="<%=currentUser.userDetail.phoneNo.countrycode%>")
+          $("#zipcodes").append("<option value="+country.dial_code+">"+country.dial_code +"</option>");
+        });
+  }).fail(function(){
+    alert("fail")
+  })
+
+  
+     // ajax For form posting starts here
+    
+// $("#btn-save1").click(function(){
+//     result1={
+//         firstName:$("input[name='firstName']").val(),
+//         lastName:$("input[name='lastName']").val(),
+//     }
+//     $("#first-form").submit(function(e){
+//             e.preventDefault();
+//     })
+//     $.ajax({
+//         url:"/userbasicinfo/<%=currentUser._id%>",
+//         type:"POST",
+//         data:result1,                  
+//     }).done(function(){
+//             $.get("/currentuser/<%=currentUser._id%>", function(data, status){
+//                 alert("Data: " + data + "\nStatus: " + status);
+//             });
+//             user
+//      });
+// })
+jQuery(function($) {
+  $('input[type="file"]').change(function() {
+    if ($(this).val()) {
+	    error = false;
+    
+      var filename = $(this).val();
+
+			$(this).closest('.file-upload').find('.file-name').html(filename);
+
+      if (error) {
+        parent.addClass('error').prepend.after('<div class="alert alert-error">' + error + '</div>');
+      }
+    }
+  });
+});
+
+</script>
+<%- include('partials/footer') %>

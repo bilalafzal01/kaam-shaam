@@ -21,7 +21,7 @@ router.post("/",middleware.isLoggedIn, function (req, res) {
         if (err) {
             console.log("There was an issue in adding data!!!")
         } else {
-            User.updateOne({_id:req.user._id},{ $push: { 'posts': newlycreated._id }},function(err,updateditem){
+            User.updateOne({_id:req.user._id},{ $push: { 'userDetail.hirerDetail.posts': newlycreated._id }},function(err,updateditem){
                 console.log(updateditem);
                 if (err)
                 {

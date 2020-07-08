@@ -13,11 +13,12 @@ let express = require("express"),
     profileRoutes=require('./routes/profile/userprofile'),
     browseJobsRoutes = require('./routes/Jobs/browsejobs');
     jobRoutes=require('./routes/Jobs/jobs');
-
+    
 // This connect string is for connecting to cloud dbs
 require('dotenv').config();
 let mongoURI = process.env.MONGODBURI;
-mongoose.connect(mongoURI);
+mongoose.connect(mongoURI, {useUnifiedTopology: true, useNewUrlParser: true});
+// mongoose.connect("mongodb+srv://admin:admin@rexia-database-rwwvm.mongodb.net/Seekh?retryWrites=true&w=majority");
 
 
 // local dbs
@@ -27,6 +28,8 @@ app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(methodOverride("_method"));
 app.use(express.static('uploads'));
+app.use(express.static('attachmentUploads'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true

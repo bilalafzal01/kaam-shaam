@@ -16,6 +16,10 @@ html {
   display: none;
 }
 
+.work {
+  display: "block";
+}
+
 body {
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
@@ -1036,6 +1040,10 @@ nav button {
   margin: 2rem 0rem 3rem 0rem;
 }
 
+.Submit-btn {
+  background-color: inherit;
+}
+
 .icon {
   padding: 10px;
   background: rgb(24, 46, 94);
@@ -1841,10 +1849,10 @@ select {
   margin: 1rem 10% 5rem;
   width: 50%;
 }
-.proposal-main-container{
-  background-color: #f2f2f2; 
-  height: fit-content; 
-  padding-top: 1rem ; 
+.proposal-main-container {
+  background-color: #f2f2f2;
+  height: fit-content;
+  padding-top: 1rem;
   padding-bottom: 10rem;
 }
 .my-feed2 {
@@ -1856,81 +1864,108 @@ select {
   font-size: 2rem;
   color: rgb(0, 0, 0, 0.7);
   border-bottom: 1px solid #e0e0e0;
-  border-bottom: none;padding:2rem 2rem;
+  border-bottom: none;
+  padding: 2rem 2rem;
   /* border-bottom: .05rem solid rgba(0, 0, 0, .4); */
 }
 /* Css for View Proposal Page */
 /* 
 Generic Styling, for Desktops/Laptops 
 */
-table { 
-  width: 100%; 
-  border-collapse: collapse; 
+table {
+  width: 100%;
+  border-collapse: collapse;
 }
 /* Zebra striping */
-tr:nth-of-type(odd) { 
-  background: #eee; 
+tr:nth-of-type(odd) {
+  background: #eee;
 }
-th { 
-  background: #333; 
-  color: white; 
-  font-weight: bold; 
+th {
+  background: #333;
+  color: white;
+  font-weight: bold;
 }
-td, th { 
-  padding: 6px; 
-  border: 1px solid #ccc; 
-  text-align: left; 
+td,
+th {
+  padding: 6px;
+  border: 1px solid #ccc;
+  text-align: left;
 }
-@media 
-only screen and (max-width: 760px),
-(min-device-width: 768px) and (max-device-width: 1024px)  {
+@media only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Force table to not be like tables anymore */
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
 
-	/* Force table to not be like tables anymore */
-	table, thead, tbody, th, td, tr { 
-		display: block; 
-	}
-	
-	/* Hide table headers (but not display: none;, for accessibility) */
-	thead tr { 
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	
-	tr { border: 1px solid #ccc; }
-	
-	td { 
-		/* Behave  like a "row" */
-		border: none;
-		border-bottom: 1px solid #eee; 
-		position: relative;
-		padding-left: 50%; 
-	}
-	
-	td:before { 
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 6px;
-		left: 6px;
-		width: 45%; 
-		padding-right: 10px; 
-		white-space: nowrap;
-	}
-	
-	/*
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #ccc;
+  }
+
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+
+  /*
 	Label the data
 	*/
-	td:nth-of-type(1):before { content: "Name"; }
-	td:nth-of-type(2):before { content: "bid Amount"; }
-	td:nth-of-type(3):before { content: "Time bid"; }
-	td:nth-of-type(4):before { content: "CoverLetter"; }
-	td:nth-of-type(5):before { content: "Resume"; }
-	td:nth-of-type(6):before { content: "Attachements"; }
-	td:nth-of-type(7):before { content: "Date of Birth"; }
-	td:nth-of-type(8):before { content: "Dream Vacation City"; }
-	td:nth-of-type(9):before { content: "GPA"; }
-	td:nth-of-type(10):before { content: "Arbitrary Data"; }
+  td:nth-of-type(1):before {
+    content: "Name";
+  }
+  td:nth-of-type(2):before {
+    content: "bid Amount";
+  }
+  td:nth-of-type(3):before {
+    content: "Time bid";
+  }
+  td:nth-of-type(4):before {
+    content: "CoverLetter";
+  }
+  td:nth-of-type(5):before {
+    content: "Resume";
+  }
+  td:nth-of-type(6):before {
+    content: "Attachements";
+  }
+  td:nth-of-type(7):before {
+    content: "Date of Birth";
+  }
+  td:nth-of-type(8):before {
+    content: "Dream Vacation City";
+  }
+  td:nth-of-type(9):before {
+    content: "GPA";
+  }
+  td:nth-of-type(10):before {
+    content: "Arbitrary Data";
+  }
 }
 /* Css ends for view Proposal Page */
 @media screen and (max-width: 1660px) {
@@ -1970,18 +2005,17 @@ only screen and (max-width: 760px),
     margin: 1rem auto;
   }
 }
-.viewProposal-container{
+.viewProposal-container {
   /* border-radius: 1rem; */
-  margin:auto;
+  margin: auto;
   padding: 10rem auto;
   width: 80%;
   box-shadow: 0 1px 6px rgba(57, 73, 76, 0.35);
-  }
-#view-proposal-table{
-border-radius: 1rem !important  ;
-
 }
-  
+#view-proposal-table {
+  border-radius: 1rem !important  ;
+}
+
 @media screen and (max-width: 900px) {
   /* .job-1{
         width: 450%;
@@ -1994,7 +2028,7 @@ border-radius: 1rem !important  ;
   .job {
     flex-direction: column;
     height: fit-content;
-    border-bottom: 1px solid #e0e0e0
+    border-bottom: 1px solid #e0e0e0;
   }
   .job-1 {
     width: 100%;
@@ -2615,21 +2649,22 @@ input[type="file"] {
   background-color: inherit;
   color: #24363f;
 }
-.proposal-time-details{
+.proposal-time-details {
   padding: 1rem;
   padding-bottom: 2rem;
 }
-.timecontainer{
+.timecontainer {
   padding-left: 1.5rem;
 }
-.time{
-  padding :0.5rem;
+.time {
+  padding: 0.5rem;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
 }
-time select,input,option{
+time select,
+input,
+option {
   outline: none;
-  
 }
 .proposal-payment-h3 {
   display: flex;
@@ -2663,7 +2698,7 @@ time select,input,option{
   padding: 0rem 0 0 1rem;
 }
 
-.price-input-statement{
+.price-input-statement {
   font-weight: 500;
 }
 
@@ -2682,30 +2717,31 @@ time select,input,option{
   color: #010101c4;
 }
 
-.price-input-bid{
+.price-input-bid {
   font-weight: 600;
 }
 
-.payment-side-div{
+.payment-side-div {
   border: 1px solid #24363f;
 }
 
-.payment-row-two{
+.payment-row-two {
   border-bottom: 1px solid #2a363bd0;
   padding: 0 1.5rem 1.5rem 1.5rem;
   margin-bottom: 1.5rem !important;
 }
 
-#price-input-div-two, #price-input-div-three{
+#price-input-div-two,
+#price-input-div-three {
   color: #010101c4;
   padding: 0;
 }
 
-.payment-row-two-last{
+.payment-row-two-last {
   border-bottom: none;
 }
 
-#priceBtn{
+#priceBtn {
   width: 25%;
   text-decoration: none;
   background-color: #576870;
